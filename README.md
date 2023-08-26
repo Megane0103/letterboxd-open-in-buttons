@@ -2,7 +2,7 @@
 Adds button to Letterboxd to open movies in Seez, The Movie Archive, and Netfilm.
 
 ## Install
-**Userscript**: Install [Violentmonkey](https://chrome.google.com/webstore/detail/violent-monkey/jinjaccalgkegednnccohejagnlnfdag) or [Tampermonkey](https://tampermonkey.net/), then **[click here to install LFM-Genius-Icon](https://greasyfork.org/scripts/461718-lfm-genius-icon/code/LFM-Genius-Icon.user.js)**.
+**Userscript**: Install [Violentmonkey](https://chrome.google.com/webstore/detail/violent-monkey/jinjaccalgkegednnccohejagnlnfdag) or [Tampermonkey](https://tampermonkey.net/), then **[click here to install letterboxd-open-in-buttons](https://greasyfork.org/scripts/473968-letterboxd-open-in-buttons/code/Letterboxd%20Open%20in%20Buttons.user.js)**.
 
 ## Please Note 
 To ensure that the script works properly, please refresh the page. 
