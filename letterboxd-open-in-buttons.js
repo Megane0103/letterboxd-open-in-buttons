@@ -6,8 +6,8 @@
 // @author       Megane0103
 // @match        https://letterboxd.com/film/*
 // @grant        GM_xmlhttpRequest
-// @license MIT; https://github.com/Megane0103/letterboxd-open-in-buttons/blob/main/LICENSE
-// @copyright 2023, Megane0103 (https://github.com/Megane0103)
+// @license      MIT; https://github.com/Megane0103/letterboxd-open-in-buttons/blob/main/LICENSE
+// @copyright   2023, Megane0103 (https://github.com/Megane0103)
 // ==/UserScript==
 
 (function() {
@@ -44,23 +44,36 @@
     function createButtons(tmdbId) {
         const ulElement = document.querySelector('.film-stats');
 
+        // Create a container for the buttons
+        const buttonsContainer = document.createElement('div');
+        ulElement.appendChild(buttonsContainer);
+
         // Create button for Seez
         const seezButton = createButton('Open in Seez', `https://seez.su/movie/${tmdbId}`);
-        ulElement.appendChild(seezButton);
+        buttonsContainer.appendChild(seezButton);
 
         // Create button for netfilm.app
         const netfilmButton = createButton('Open in Netfilm', `https://netfilm.app/watch/movie/tmdb/${movieTitle}_${tmdbId}`);
-        ulElement.appendChild(netfilmButton);
+        buttonsContainer.appendChild(netfilmButton);
+
+        // Create button for Movie Web
+        const customButton = createButton('Open in Movie Web', `https://movie-web.app/media/tmdb-movie-${tmdbId}`);
+        buttonsContainer.appendChild(customButton);
+
+        // Create button for Smashy Stream
+        const smashyButton = createButton('Open in Smashy Stream', `https://smashystream.xyz/movie/${tmdbId}/watch`);
+        buttonsContainer.appendChild(smashyButton);
 
         // Create button for The Movie Archive
         const archiveButton = createButton('THE MOVIE ARCHIVE', `https://themoviearchive.site/media.html?tmdb=${tmdbId}`);
-        ulElement.appendChild(archiveButton);
+        buttonsContainer.appendChild(archiveButton);
     }
 
     // Create a button element
     function createButton(text, href) {
         const button = document.createElement('a');
         button.className = 'button button--filled';
+        button.style.display = 'block'; // Display as block to make it a separate row
         button.style.marginTop = '10px';
         button.style.fontFamily = 'courier new, Courier, monospace';
         button.textContent = text;
