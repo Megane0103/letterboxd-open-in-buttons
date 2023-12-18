@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Letterboxd Open in Buttons
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.3
 // @description  Adds buttons to get links for movies on different streaming sites from Letterboxd.
 // @author       Megane0103
 // @match        https://letterboxd.com/film/*
@@ -16,8 +16,9 @@
     // TMDB API key
     const apiKey = 'f11591f7d995fc652ac64a06d568947c';
 
-    // Extract movie title from the page
-    const movieTitle = document.querySelector('.headline-1').textContent.trim();
+    // Extract movie title from the URL
+    const movieTitleMatch = window.location.pathname.match(/\/film\/([^/]+)/);
+    const movieTitle = movieTitleMatch ? movieTitleMatch[1] : '';
 
     // Extract movie year from the page
     const movieYearElement = document.querySelector('a[href^="/films/year/"]');
@@ -48,25 +49,24 @@
         const buttonsContainer = document.createElement('div');
         ulElement.appendChild(buttonsContainer);
 
-        // Create button for Seez
-        const seezButton = createButton('Open in Seez', `https://seez.su/movie/${tmdbId}`);
-        buttonsContainer.appendChild(seezButton);
+        // Button configurations
+        const buttonConfigurations = [
+            { text: 'Open in YIFY', href: `https://yts.mx/movies/${movieTitle}-${movieYear}`, backgroundColor: 'green' },
+            { text: 'Open in Movie Web', href: `https://movie-web.app/media/tmdb-movie-${tmdbId}` },
+            { text: 'Open in Seez', href: `https://seez.su/movie/${tmdbId}` },
+            // { text: 'Open in Netfilm', href: `https://netfilm.app/watch/movie/tmdb/${movieTitle}_${tmdbId}` },
+            { text: 'Open in Smashy Stream', href: `https://smashystream.xyz/movie/${tmdbId}/watch` },
+            { text: 'THE MOVIE ARCHIVE', href: `https://themoviearchive.site/watch?tmdb=${tmdbId}` }
+        ];
 
-        // Create button for netfilm.app
-        const netfilmButton = createButton('Open in Netfilm', `https://netfilm.app/watch/movie/tmdb/${movieTitle}_${tmdbId}`);
-        buttonsContainer.appendChild(netfilmButton);
-
-        // Create button for Movie Web
-        const customButton = createButton('Open in Movie Web', `https://movie-web.app/media/tmdb-movie-${tmdbId}`);
-        buttonsContainer.appendChild(customButton);
-
-        // Create button for Smashy Stream
-        const smashyButton = createButton('Open in Smashy Stream', `https://smashystream.xyz/movie/${tmdbId}/watch`);
-        buttonsContainer.appendChild(smashyButton);
-
-        // Create button for The Movie Archive
-        const archiveButton = createButton('THE MOVIE ARCHIVE', `https://themoviearchive.site/media.html?tmdb=${tmdbId}`);
-        buttonsContainer.appendChild(archiveButton);
+        // Create buttons
+        buttonConfigurations.forEach(config => {
+            const button = createButton(config.text, config.href);
+            if (config.backgroundColor) {
+                button.style.backgroundColor = config.backgroundColor;
+            }
+            buttonsContainer.appendChild(button);
+        });
     }
 
     // Create a button element
