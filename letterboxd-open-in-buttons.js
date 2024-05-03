@@ -1,13 +1,15 @@
 // ==UserScript==
 // @name         Letterboxd Open in Buttons
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @description  Adds buttons to get links for movies on different streaming sites from Letterboxd.
 // @author       Megane0103
 // @match        https://letterboxd.com/film/*
 // @grant        GM_xmlhttpRequest
 // @license      MIT; https://github.com/Megane0103/letterboxd-open-in-buttons/blob/main/LICENSE
 // @copyright   2023, Megane0103 (https://github.com/Megane0103)
+// @downloadURL https://update.greasyfork.org/scripts/473968/Letterboxd%20Open%20in%20Buttons.user.js
+// @updateURL https://update.greasyfork.org/scripts/473968/Letterboxd%20Open%20in%20Buttons.meta.js
 // ==/UserScript==
 
 (function() {
@@ -52,7 +54,7 @@
         // Button configurations
         const buttonConfigurations = [
             { text: 'Open in YIFY', href: `https://yts.mx/movies/${movieTitle}-${movieYear}`, backgroundColor: 'green' },
-            { text: 'Open in Movie Web', href: `https://movie-web.app/media/tmdb-movie-${tmdbId}` },
+            { text: 'Open in Movie Web', href: `https://sudo-flix.lol/media/tmdb-movie-${tmdbId}` },
             { text: 'Open in Seez', href: `https://seez.su/movie/${tmdbId}` },
             // { text: 'Open in Netfilm', href: `https://netfilm.app/watch/movie/tmdb/${movieTitle}_${tmdbId}` },
             { text: 'Open in Smashy Stream', href: `https://smashystream.xyz/movie/${tmdbId}/watch` },
