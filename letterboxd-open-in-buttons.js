@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Letterboxd Open in Buttonss
+// @name         Letterboxd Open in Buttons
 // @namespace    http://tampermonkey.net/
 // @version      0.4
 // @description  Adds buttons to get links for movies on different streaming sites from Letterboxd.
