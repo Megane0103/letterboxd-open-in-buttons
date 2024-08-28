@@ -5,6 +5,7 @@ Adds buttons to Letterboxd to open movies in YIFY, The Movie Web, and Braflix...
 ## Screenshot
 
 Here's a preview of letterboxd-open-in-buttons in action:
+
 ![LOIB Screenshot](screenshot.png)
 
 ## Installation
